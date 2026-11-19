@@ -23,6 +23,7 @@ COLORS = [
 ]
 
 
+
 def radar_chart(song_a, song_b):
     categories = RADAR_FEATURES + [RADAR_FEATURES[0]]
     fig = go.Figure()

@@ -13,13 +13,16 @@ class Recommender:
         df = pd.read_csv(path)
         df = df.drop(columns=["Unnamed: 0"], errors="ignore")
         df = df.dropna(subset=["track_name", "artists"])
+        df = df.sort_values("popularity", ascending=False)
         df = df.drop_duplicates(subset=["track_name", "artists"])
         self.df = df.reset_index(drop=True)
         self.scaled = StandardScaler().fit_transform(self.df[FEATURES])
 
-    def search(self, query, limit=10):
-        mask = self.df["track_name"].str.contains(
-            query, case=False, na=False, regex=False
+    def search(self, query, limit=15):
+        q = query.strip()
+        mask = (
+            self.df["track_name"].str.contains(q, case=False, na=False, regex=False)
+            | self.df["artists"].str.contains(q, case=False, na=False, regex=False)
         )
         return self.df[mask].sort_values("popularity", ascending=False).head(limit)
 
