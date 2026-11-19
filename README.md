@@ -3,7 +3,7 @@
 A content-based music recommendation app. Search for a song and get tracks
 that sound similar, based on Spotify audio features.
 
-**Live demo:** _(link coming soon)_
+**Live demo:** https://priyank-music-recommender-uzpzrtzmsxkvdajrf7juic.streamlit.app/
 
 ## How it works
 
